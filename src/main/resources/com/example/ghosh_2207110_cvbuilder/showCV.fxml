@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.VBox?>
+
+<BorderPane prefHeight="600" prefWidth="900" stylesheets="@formStyle.css"
+            xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="com.example.ghosh_2207110_cvbuilder.ShowCVController">
+
+    <left>
+        <VBox prefWidth="300" spacing="20" styleClass="left-panel">
+            <ImageView fx:id="profileImageView" fitHeight="150" fitWidth="150" preserveRatio="true" styleClass="profile-image" />
+            <Label fx:id="nameLabel" styleClass="name-label" />
+            <Label fx:id="jobLabel" styleClass="job-label" />
+            <Label text="CONTACT" styleClass="contact-header" />
+            <VBox spacing="10">
+                <Label fx:id="phoneLabel" styleClass="contact-label" />
+                <Label fx:id="emailLabel" styleClass="contact-label" />
+                <Label fx:id="addressLabel" styleClass="contact-label" />
+            </VBox>
+        </VBox>
+    </left>
+
+    <center>
+        <VBox spacing="30" styleClass="center-panel">
+            <Label text="EDUCATION" styleClass="section-header" />
+            <Label fx:id="educationLabel" styleClass="section-content" />
+
+            <Label text="SKILLS" styleClass="section-header" />
+            <Label fx:id="skillsLabel" styleClass="section-content" />
+
+            <Label text="WORK EXPERIENCE" styleClass="section-header" />
+            <Label fx:id="workLabel" styleClass="section-content" />
+
+            <Label text="PROJECTS" styleClass="section-header" />
+            <Label fx:id="projectsLabel" styleClass="section-content" />
+        </VBox>
+    </center>
+
+</BorderPane>

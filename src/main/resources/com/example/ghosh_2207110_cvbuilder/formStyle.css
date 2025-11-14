@@ -15,3 +15,48 @@
     -fx-background-radius: 5;
     -fx-border-radius: 5;
 }
+
+.left-panel {
+    -fx-background-color: #2F3A4C;
+    -fx-padding: 30;
+}
+
+.profile-image {
+    -fx-border-radius: 75;
+    -fx-background-radius: 75;
+}
+
+.name-label {
+    -fx-text-fill: white;
+    -fx-font-size: 22;
+    -fx-font-weight: bold;
+}
+
+.job-label {
+    -fx-text-fill: #A6C0FF;
+    -fx-font-size: 14;
+}
+
+.contact-header {
+    -fx-text-fill: white;
+    -fx-font-size: 16;
+    -fx-font-weight: bold;
+}
+
+.contact-label {
+    -fx-text-fill: white;
+}
+
+.center-panel {
+    -fx-padding: 30;
+}
+
+.section-header {
+    -fx-font-size: 22;
+    -fx-font-weight: bold;
+}
+
+.section-content {
+    -fx-font-size: 14;
+    -fx-text-fill: #444444;
+}
