@@ -11,6 +11,7 @@ A simple JavaFX application that builds and displays a CV/resume with profile ph
 - Display CV sections: Education, Skills, Work Experience, Projects
 - Dynamically generate bullet‑list content from comma‑separated strings
 - Responsive layout using JavaFX `BorderPane`, `VBox`, and CSS styling
+- Multiple entries (Education, Skills, Work Experience, Projects) can be added using comma-separated values. For example, in the Skills field: Web Development, App Development, Data Science
 
 ---
 
