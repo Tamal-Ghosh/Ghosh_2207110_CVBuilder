@@ -4,7 +4,8 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.shape.Circle;
+import javafx.geometry.Rectangle2D;
+
 
 public class ShowCVController {
 
@@ -19,7 +20,6 @@ public class ShowCVController {
     @FXML private Label projectsLabel;
 
     public void initData(CVData data) {
-
         nameLabel.setText(data.fullName);
         emailLabel.setText(data.email);
         phoneLabel.setText(data.phone);
@@ -33,17 +33,12 @@ public class ShowCVController {
             Image img = new Image(data.imagePath);
             profileImageView.setImage(img);
 
-            profileImageView.setFitWidth(150);
-            profileImageView.setFitHeight(150);
-            profileImageView.setPreserveRatio(true);
-
-            double radius = 75;
-            Circle clip = new Circle(radius);
-            clip.setCenterX(radius);
-            clip.setCenterY(radius);
-
-            profileImageView.setClip(clip);
+            double min = Math.min(img.getWidth(), img.getHeight());
+            profileImageView.setViewport(new Rectangle2D(
+                    (img.getWidth() - min) / 2,
+                    (img.getHeight() - min) / 2, min, min));
         }
+
     }
 
     private String toBullets(String data) {

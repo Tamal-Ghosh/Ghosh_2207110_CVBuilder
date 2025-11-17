@@ -5,13 +5,19 @@
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.VBox?>
 
+<?import javafx.scene.shape.Circle?>
 <BorderPane prefHeight="600" prefWidth="900" stylesheets="@formStyle.css"
             xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1"
             fx:controller="com.example.ghosh_2207110_cvbuilder.ShowCVController">
 
     <left>
         <VBox prefWidth="300" spacing="20" styleClass="left-panel">
-            <ImageView fx:id="profileImageView" fitHeight="150" fitWidth="150" preserveRatio="true" styleClass="profile-image" />
+            <ImageView fx:id="profileImageView" fitWidth="150" fitHeight="150" preserveRatio="false">
+                <clip>
+                    <Circle centerX="75" centerY="75" radius="75"/>
+                </clip>
+            </ImageView>
+
             <Label fx:id="nameLabel" styleClass="name-label" />
             <Label text="CONTACT" styleClass="contact-header" />
             <VBox spacing="10">
