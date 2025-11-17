@@ -7,35 +7,41 @@ import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 
+import java.io.File;
 import java.io.IOException;
 
 public class FormController {
 
-    @FXML
-    private TextField inputName;
+    @FXML private TextField inputName;
+    @FXML private TextField inputEmail;
+    @FXML private TextArea inputNumber;
+    @FXML private TextArea inputAdd;
+    @FXML private TextArea inputEducation;
+    @FXML private TextArea inputSkills;
+    @FXML private TextArea inputWork;
+    @FXML private TextArea inputProject;
+    @FXML private ImageView profileImageView;
+
+    private File selectedImageFile;
 
     @FXML
-    private TextField inputEmail;
+    void onChooseImage(ActionEvent event) {
 
-    @FXML
-    private TextArea inputNumber;
-
-    @FXML
-    private TextArea inputAdd;
-
-    @FXML
-    private TextArea inputEducation;
-
-    @FXML
-    private TextArea inputSkills;
-
-    @FXML
-    private TextArea inputWork;
-
-    @FXML
-    private TextArea inputProject;
+        FileChooser chooser = new FileChooser();
+        chooser.setTitle("Select Profile Picture");
+        chooser.getExtensionFilters().add(
+                new FileChooser.ExtensionFilter("Image Files", "*.png", "*.jpg", "*.jpeg")
+        );
+        selectedImageFile = chooser.showOpenDialog(null);
+        if (selectedImageFile != null) {
+            profileImageView.setImage(new Image(selectedImageFile.toURI().toString()));
+        }
+    }
 
     @FXML
     void OnbtnClkBuildCv(ActionEvent event) throws IOException {
@@ -51,7 +57,8 @@ public class FormController {
                 inputEducation.getText(),
                 inputSkills.getText(),
                 inputWork.getText(),
-                inputProject.getText()
+                inputProject.getText(),
+                selectedImageFile != null ? selectedImageFile.toURI().toString() : null
         );
 
         controller.initData(data);

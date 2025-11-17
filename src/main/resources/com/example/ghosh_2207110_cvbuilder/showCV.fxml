@@ -13,7 +13,6 @@
         <VBox prefWidth="300" spacing="20" styleClass="left-panel">
             <ImageView fx:id="profileImageView" fitHeight="150" fitWidth="150" preserveRatio="true" styleClass="profile-image" />
             <Label fx:id="nameLabel" styleClass="name-label" />
-            <Label fx:id="jobLabel" styleClass="job-label" />
             <Label text="CONTACT" styleClass="contact-header" />
             <VBox spacing="10">
                 <Label fx:id="phoneLabel" styleClass="contact-label" />

@@ -32,10 +32,6 @@
     -fx-font-weight: bold;
 }
 
-.job-label {
-    -fx-text-fill: #A6C0FF;
-    -fx-font-size: 14;
-}
 
 .contact-header {
     -fx-text-fill: white;
