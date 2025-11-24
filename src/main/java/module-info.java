@@ -10,6 +10,7 @@ module com.example.ghosh_2207110_cvbuilder {
     requires org.kordamp.bootstrapfx.core;
     requires eu.hansolo.tilesfx;
     requires com.almasb.fxgl.all;
+    requires java.sql;
 
     opens com.example.ghosh_2207110_cvbuilder to javafx.fxml;
     exports com.example.ghosh_2207110_cvbuilder;
