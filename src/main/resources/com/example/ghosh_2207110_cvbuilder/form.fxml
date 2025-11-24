@@ -108,7 +108,7 @@
         <HBox alignment="CENTER" prefHeight="90" spacing="0" BorderPane.alignment="CENTER">
             <Button fx:id="btCVBuild"
                     contentDisplay="CENTER"
-                    onAction="#OnbtnClkBuildCv"
+                    onAction="#onBtnBuildCV"
                     text="Create CV"
                     style="-fx-background-color: #4A47D0; -fx-text-fill: white; -fx-font-size: 16; -fx-padding: 10 30; -fx-background-radius: 10;" />
         </HBox>

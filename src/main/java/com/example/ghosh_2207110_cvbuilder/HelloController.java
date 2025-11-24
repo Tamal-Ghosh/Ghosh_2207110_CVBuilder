@@ -16,6 +16,9 @@ public class HelloController {
     private Button BtnCeateCv;
 
     @FXML
+    private Button btnShowAll;
+
+    @FXML
     private Label welcomeLabel;
 
     @FXML
@@ -26,6 +29,15 @@ public class HelloController {
         stage.setScene(scene);
         stage.show();
 
+    }
+
+    @FXML
+    void onShowAllCVbtn (ActionEvent event) throws IOException {
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("cv-data-show.fxml"));
+        Scene scene=new Scene(fxmlLoader.load());
+        Stage stage=(Stage) (welcomeLabel.getScene().getWindow());
+        stage.setScene(scene);
+        stage.show();
     }
 
 }

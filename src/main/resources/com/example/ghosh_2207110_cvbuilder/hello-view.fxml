@@ -18,6 +18,7 @@
             </Label>
 
             <Button fx:id="BtnCeateCv" mnemonicParsing="false" onAction="#OnClickCreateCv" text="Create your CV" />
+         <Button fx:id="btnShowAll" mnemonicParsing="false" onAction="#onShowAllCVbtn" text="Show all CV" />
         </VBox>
     </center>
 

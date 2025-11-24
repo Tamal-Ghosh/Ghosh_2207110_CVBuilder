@@ -44,7 +44,7 @@ public class FormController {
     }
 
     @FXML
-    void OnbtnClkBuildCv(ActionEvent event) {
+    void onBtnBuildCV(ActionEvent event) {
         String name = inputName.getText();
         String email = inputEmail.getText();
         String phone = inputNumber.getText();
@@ -55,29 +55,17 @@ public class FormController {
         String project = inputProject.getText();
         String imagePath = selectedImageFile != null ? selectedImageFile.toURI().toString() : null;
 
-        repository.insertAsync(name, email, phone, address, education, skills, work, project, imagePath,
+        repository.insertAsync(
+                name, email, phone, address, education, skills, work, project, imagePath,
                 insertedCV -> {
                     try {
                         FXMLLoader loader = new FXMLLoader(getClass().getResource("showcv.fxml"));
-                        Scene scene = new Scene(loader.load());
-                        ShowCVController controller = loader.getController();
-
-                        ShowCVController.CVData data = new ShowCVController.CVData(
-                                insertedCV.getName(),
-                                insertedCV.getEmail(),
-                                insertedCV.getPhone(),
-                                insertedCV.getAddress(),
-                                insertedCV.getEducation(),
-                                insertedCV.getSkills(),
-                                insertedCV.getWork(),
-                                insertedCV.getProject(),
-                                insertedCV.getImagePath()
-                        );
-
-                        controller.initData(data);
-
                         Stage stage = (Stage) inputName.getScene().getWindow();
-                        stage.setScene(scene);
+                        stage.setScene(new Scene(loader.load()));
+
+                        ShowCVController controller = loader.getController();
+                        controller.initData(insertedCV);
+
                         stage.show();
 
                         Alert alert = new Alert(Alert.AlertType.INFORMATION);
@@ -87,7 +75,8 @@ public class FormController {
                         alert.showAndWait();
                     } catch (IOException e) {
                         e.printStackTrace();
-                        Alert err = new Alert(Alert.AlertType.ERROR, "Failed to load showcv.fxml: " + e.toString());
+                        Alert err = new Alert(Alert.AlertType.ERROR,
+                                "Failed to load showcv.fxml: " + e.toString());
                         err.showAndWait();
                     }
                 },
@@ -101,5 +90,4 @@ public class FormController {
                 }
         );
     }
-
 }
