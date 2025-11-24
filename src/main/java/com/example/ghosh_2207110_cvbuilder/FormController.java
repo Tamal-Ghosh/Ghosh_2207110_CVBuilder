@@ -28,10 +28,10 @@ public class FormController {
     @FXML private ImageView profileImageView;
 
     private File selectedImageFile;
+    private final CVRepository repository = CVRepository.getInstance();
 
     @FXML
     void onChooseImage(ActionEvent event) {
-
         FileChooser chooser = new FileChooser();
         chooser.setTitle("Select Profile Picture");
         chooser.getExtensionFilters().add(
@@ -44,33 +44,62 @@ public class FormController {
     }
 
     @FXML
-    void OnbtnClkBuildCv(ActionEvent event) throws IOException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("showcv.fxml"));
-        Scene scene = new Scene(loader.load());
-        ShowCVController controller = loader.getController();
+    void OnbtnClkBuildCv(ActionEvent event) {
+        String name = inputName.getText();
+        String email = inputEmail.getText();
+        String phone = inputNumber.getText();
+        String address = inputAdd.getText();
+        String education = inputEducation.getText();
+        String skills = inputSkills.getText();
+        String work = inputWork.getText();
+        String project = inputProject.getText();
+        String imagePath = selectedImageFile != null ? selectedImageFile.toURI().toString() : null;
 
-        ShowCVController.CVData data = new ShowCVController.CVData(
-                inputName.getText(),
-                inputEmail.getText(),
-                inputNumber.getText(),
-                inputAdd.getText(),
-                inputEducation.getText(),
-                inputSkills.getText(),
-                inputWork.getText(),
-                inputProject.getText(),
-                selectedImageFile != null ? selectedImageFile.toURI().toString() : null
+        repository.insertAsync(name, email, phone, address, education, skills, work, project, imagePath,
+                insertedCV -> {
+                    try {
+                        FXMLLoader loader = new FXMLLoader(getClass().getResource("showcv.fxml"));
+                        Scene scene = new Scene(loader.load());
+                        ShowCVController controller = loader.getController();
+
+                        ShowCVController.CVData data = new ShowCVController.CVData(
+                                insertedCV.getName(),
+                                insertedCV.getEmail(),
+                                insertedCV.getPhone(),
+                                insertedCV.getAddress(),
+                                insertedCV.getEducation(),
+                                insertedCV.getSkills(),
+                                insertedCV.getWork(),
+                                insertedCV.getProject(),
+                                insertedCV.getImagePath()
+                        );
+
+                        controller.initData(data);
+
+                        Stage stage = (Stage) inputName.getScene().getWindow();
+                        stage.setScene(scene);
+                        stage.show();
+
+                        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                        alert.setTitle("Info");
+                        alert.setHeaderText(null);
+                        alert.setContentText("CV saved successfully!");
+                        alert.showAndWait();
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                        Alert err = new Alert(Alert.AlertType.ERROR, "Failed to load showcv.fxml: " + e.toString());
+                        err.showAndWait();
+                    }
+                },
+                error -> {
+                    error.printStackTrace();
+                    Alert alert = new Alert(Alert.AlertType.ERROR);
+                    alert.setTitle("Error");
+                    alert.setHeaderText(null);
+                    alert.setContentText("Failed to save CV: " + error.toString());
+                    alert.showAndWait();
+                }
         );
-
-        controller.initData(data);
-
-        Stage stage = (Stage) inputName.getScene().getWindow();
-        stage.setScene(scene);
-        stage.show();
-
-        Alert alert = new Alert(Alert.AlertType.INFORMATION);
-        alert.setTitle("Info");
-        alert.setHeaderText(null);
-        alert.setContentText("CV saved successfully!");
-        alert.showAndWait();
     }
+
 }
