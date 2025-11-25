@@ -5,6 +5,7 @@
 
 <VBox xmlns="http://javafx.com/javafx"
       xmlns:fx="http://javafx.com/fxml"
+      fx:controller="com.example.ghosh_2207110_cvbuilder.CVDataShowController"
       spacing="20" alignment="CENTER"
       prefHeight="400" prefWidth="800" style="-fx-padding: 20;">
 
