@@ -10,6 +10,7 @@ import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import javafx.scene.Scene;
 import javafx.fxml.FXMLLoader;
+
 import java.io.IOException;
 import java.util.List;
 
@@ -93,6 +94,29 @@ public class CVDataShowController {
                 editBtn.setOnAction(e -> {
                     PersonCV cv = (PersonCV) getTableRow().getItem();
                     if (cv == null) return;
+
+                    try {
+                        FXMLLoader loader = new FXMLLoader(getClass().getResource("form.fxml"));
+                        Stage stage = new Stage();
+                        Scene scene = new Scene(loader.load());
+                        stage.setScene(scene);
+
+                        FormController controller = loader.getController();
+                        controller.loadForEdit(cv, () -> {
+                            repository.getAllAsync(list -> {
+                                data.setAll(list);
+                                cvTable.setItems(data);
+                            }, ex -> ex.printStackTrace());
+                        });
+
+                        stage.show();
+
+                    } catch (IOException ioEx) {
+                        ioEx.printStackTrace();
+                        Alert alert = new Alert(Alert.AlertType.ERROR);
+                        alert.setContentText("Failed to open form: " + ioEx);
+                        alert.showAndWait();
+                    }
                 });
 
                 deleteBtn.setOnAction(e -> {
@@ -121,5 +145,22 @@ public class CVDataShowController {
                 }
             }
         });
+    }
+
+    @FXML
+    private void onAddNewCV() {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("form.fxml"));
+            Stage stage = (Stage) cvTable.getScene().getWindow();
+            Scene scene = new Scene(loader.load());
+            stage.setScene(scene);
+            stage.show();
+
+        } catch (IOException e) {
+            e.printStackTrace();
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setContentText("Failed to open form: " + e);
+            alert.showAndWait();
+        }
     }
 }

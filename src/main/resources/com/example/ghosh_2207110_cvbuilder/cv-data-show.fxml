@@ -3,27 +3,37 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<VBox xmlns="http://javafx.com/javafx"
-      xmlns:fx="http://javafx.com/fxml"
-      fx:controller="com.example.ghosh_2207110_cvbuilder.CVDataShowController"
-      spacing="20" alignment="CENTER"
-      prefHeight="400" prefWidth="800" style="-fx-padding: 20;">
+<BorderPane xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="com.example.ghosh_2207110_cvbuilder.CVDataShowController"
+            prefHeight="500" prefWidth="800">
 
-    <Label text="All CVs" style="-fx-font-size: 20px; -fx-font-weight: bold;" />
+    <center>
+        <VBox spacing="20" alignment="CENTER" style="-fx-padding: 20;">
+            <Label text="All CVs" style="-fx-font-size: 20px; -fx-font-weight: bold;" />
+            <TableView fx:id="cvTable" VBox.vgrow="ALWAYS" prefHeight="400" prefWidth="760">
+                <columns>
+                    <TableColumn text="ID" fx:id="idColumn" />
+                    <TableColumn text="Name" fx:id="nameColumn"/>
+                    <TableColumn text="Email" fx:id="emailColumn"/>
+                    <TableColumn text="Phone" fx:id="phoneColumn"/>
+                    <TableColumn text="Address" fx:id="addressColumn"/>
+                    <TableColumn text="Education" fx:id="educationColumn"/>
+                    <TableColumn text="Skills" fx:id="skillsColumn"/>
+                    <TableColumn text="Work" fx:id="workColumn"/>
+                    <TableColumn text="Project" fx:id="projectColumn"/>
+                    <TableColumn text="Actions" fx:id="actionColumn"/>
+                </columns>
+            </TableView>
+        </VBox>
+    </center>
 
-    <TableView fx:id="cvTable" VBox.vgrow="ALWAYS" prefHeight="360" prefWidth="760">
-        <columns>
-            <TableColumn text="ID" fx:id="idColumn" />
-            <TableColumn text="Name" fx:id="nameColumn"/>
-            <TableColumn text="Email" fx:id="emailColumn"/>
-            <TableColumn text="Phone" fx:id="phoneColumn"/>
-            <TableColumn text="Address" fx:id="addressColumn"/>
-            <TableColumn text="Education" fx:id="educationColumn"/>
-            <TableColumn text="Skills" fx:id="skillsColumn"/>
-            <TableColumn text="Work" fx:id="workColumn"/>
-            <TableColumn text="Project" fx:id="projectColumn"/>
-            <TableColumn text="Actions" fx:id="actionColumn"/>
-        </columns>
-    </TableView>
+    <bottom>
+        <Button text="Add New CV"
+                onAction="#onAddNewCV"
+                prefHeight="50"
+                maxWidth="Infinity"
+                style="-fx-background-color: #4A47D0; -fx-text-fill: white; -fx-font-size: 16;"/>
+    </bottom>
 
-</VBox>
+</BorderPane>

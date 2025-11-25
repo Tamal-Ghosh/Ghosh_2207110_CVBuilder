@@ -7,6 +7,7 @@ import java.util.concurrent.Executors;
 import java.util.function.Consumer;
 
 public class CVRepository {
+
     private static final ExecutorService executor = Executors.newSingleThreadExecutor();
     private static final CVRepository INSTANCE = new CVRepository();
 
@@ -54,7 +55,7 @@ public class CVRepository {
         });
     }
 
-    public void deleteAsync(int id, Runnable onSuccess, Consumer<Throwable> onError) {
+    public void deleteAsync(long id, Runnable onSuccess, Consumer<Throwable> onError) {
         executor.submit(() -> {
             try {
                 DataBaseHelper.deleteCV(id);

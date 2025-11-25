@@ -1,10 +1,15 @@
 package com.example.ghosh_2207110_cvbuilder;
 
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.geometry.Rectangle2D;
+import javafx.stage.Stage;
+import javafx.event.ActionEvent;
+import java.io.IOException;
 
 public class ShowCVController {
 
@@ -44,6 +49,19 @@ public class ShowCVController {
             }
         } else {
             profileImageView.setImage(null);
+        }
+    }
+
+    @FXML
+    private void onHomeClicked(ActionEvent event) {
+        try {
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("hello-view.fxml"));
+            Scene scene = new Scene(fxmlLoader.load());
+            Stage stage = (Stage) profileImageView.getScene().getWindow();
+            stage.setScene(scene);
+            stage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
         }
     }
 

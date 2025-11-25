@@ -1,25 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.VBox?>
-
 <?import javafx.scene.shape.Circle?>
+<?import javafx.scene.text.Font?>
+
 <BorderPane prefHeight="600" prefWidth="900" stylesheets="@formStyle.css"
             xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1"
             fx:controller="com.example.ghosh_2207110_cvbuilder.ShowCVController">
 
     <left>
         <VBox prefWidth="300" spacing="20" styleClass="left-panel">
-            <ImageView fx:id="profileImageView" fitWidth="150" fitHeight="150" preserveRatio="false">
+            <ImageView fx:id="profileImageView" fitHeight="150" fitWidth="150" preserveRatio="false">
                 <clip>
-                    <Circle centerX="75" centerY="75" radius="75"/>
+                    <Circle centerX="75" centerY="75" radius="75" />
                 </clip>
             </ImageView>
 
             <Label fx:id="nameLabel" styleClass="name-label" />
-            <Label text="CONTACT" styleClass="contact-header" />
+            <Label styleClass="contact-header" text="CONTACT" />
             <VBox spacing="10">
                 <Label fx:id="phoneLabel" styleClass="contact-label" />
                 <Label fx:id="emailLabel" styleClass="contact-label" />
@@ -30,18 +32,33 @@
 
     <center>
         <VBox spacing="30" styleClass="center-panel">
-            <Label text="EDUCATION" styleClass="section-header" />
+            <Label styleClass="section-header" text="EDUCATION" />
             <Label fx:id="educationLabel" styleClass="section-content" />
 
-            <Label text="SKILLS" styleClass="section-header" />
+            <Label styleClass="section-header" text="SKILLS" />
             <Label fx:id="skillsLabel" styleClass="section-content" />
 
-            <Label text="WORK EXPERIENCE" styleClass="section-header" />
+            <Label styleClass="section-header" text="WORK EXPERIENCE" />
             <Label fx:id="workLabel" styleClass="section-content" />
 
-            <Label text="PROJECTS" styleClass="section-header" />
+            <Label styleClass="section-header" text="PROJECTS" />
             <Label fx:id="projectsLabel" styleClass="section-content" />
         </VBox>
     </center>
+
+    <bottom>
+        <Button onAction="#onHomeClicked"
+                prefHeight="38.0"
+                maxWidth="Infinity"
+                style="-fx-background-color: #4A47D0;"
+                styleClass="home-button"
+                text="Home"
+                textFill="WHITE"
+                BorderPane.alignment="CENTER">
+            <font>
+                <Font size="16.0" />
+            </font>
+        </Button>
+    </bottom>
 
 </BorderPane>

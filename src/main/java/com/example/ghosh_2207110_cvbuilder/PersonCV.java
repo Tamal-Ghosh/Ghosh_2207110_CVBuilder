@@ -36,4 +36,5 @@ public class PersonCV {
     public String getWork() { return work; }
     public String getProject() { return project; }
     public String getImagePath() { return imagePath; }
+
 }
