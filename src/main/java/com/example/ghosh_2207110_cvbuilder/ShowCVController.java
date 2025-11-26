@@ -64,7 +64,6 @@ public class ShowCVController {
             e.printStackTrace();
         }
     }
-
     private String toBullets(String data) {
         if (data == null || data.isEmpty()) return "";
         StringBuilder sb = new StringBuilder();
